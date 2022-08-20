@@ -78,5 +78,12 @@ namespace P03AplikacjaZawodnicy
         private void btnZapisz_Click(object sender, EventArgs e)
         {
         }
+
+        private void btnRaport_Click(object sender, EventArgs e)
+        {
+            PdfManager pm = new PdfManager();
+            var zawodnicy = (ZawodnikVM[])lbDane.DataSource;
+            pm.StworzPDF(zawodnicy);
+        }
     }
 }

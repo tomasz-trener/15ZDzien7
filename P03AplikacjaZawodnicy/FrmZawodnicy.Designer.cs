@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.lbDane = new System.Windows.Forms.ListBox();
             this.btnWczytaj = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -45,6 +45,7 @@
             this.rbWzrost = new System.Windows.Forms.RadioButton();
             this.btnZapisz = new System.Windows.Forms.Button();
             this.chartWykres = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.btnRaport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chartWykres)).BeginInit();
             this.SuspendLayout();
             // 
@@ -181,25 +182,36 @@
             // 
             // chartWykres
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chartWykres.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chartWykres.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.chartWykres.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartWykres.Legends.Add(legend1);
             this.chartWykres.Location = new System.Drawing.Point(394, 67);
             this.chartWykres.Name = "chartWykres";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chartWykres.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartWykres.Series.Add(series1);
             this.chartWykres.Size = new System.Drawing.Size(322, 317);
             this.chartWykres.TabIndex = 13;
             this.chartWykres.Text = "chart1";
+            // 
+            // btnRaport
+            // 
+            this.btnRaport.Location = new System.Drawing.Point(297, 362);
+            this.btnRaport.Name = "btnRaport";
+            this.btnRaport.Size = new System.Drawing.Size(75, 23);
+            this.btnRaport.TabIndex = 14;
+            this.btnRaport.Text = "Rarport";
+            this.btnRaport.UseVisualStyleBackColor = true;
+            this.btnRaport.Click += new System.EventHandler(this.btnRaport_Click);
             // 
             // FrmZawodnicy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(740, 397);
+            this.Controls.Add(this.btnRaport);
             this.Controls.Add(this.chartWykres);
             this.Controls.Add(this.btnZapisz);
             this.Controls.Add(this.rbWzrost);
@@ -239,6 +251,7 @@
         private System.Windows.Forms.RadioButton rbWzrost;
         private System.Windows.Forms.Button btnZapisz;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartWykres;
+        private System.Windows.Forms.Button btnRaport;
     }
 }
 
