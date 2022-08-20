@@ -89,9 +89,17 @@ namespace P01WstepLINQ
                     Wspolczynnik = x.Wzrost + x.Waga
                 }).ToArray();
 
-            foreach (var zaw in wynik10)
+            //foreach (var zaw in wynik10)
+            //{
+            //    Console.WriteLine(zaw.MojeNazwisko + " " + zaw.MojeNazwisko + " " + zaw.Wspolczynnik);
+            //}
+
+            var wynik11 =
+                zrodlo.GroupBy(x => x.Kraj).Select(x => new { kraj = x.Key, srWzrost = x.Average(y => y.Wzrost) }).ToArray();
+
+            foreach (var g in wynik11)
             {
-                Console.WriteLine(zaw.MojeNazwisko + " " + zaw.MojeNazwisko + " " + zaw.Wspolczynnik);
+                Console.WriteLine(g.kraj + " " + g.srWzrost);
             }
 
             Console.ReadKey();

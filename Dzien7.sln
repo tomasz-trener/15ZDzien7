@@ -5,6 +5,10 @@ VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P01WstepLINQ", "P01WstepLINQ\P01WstepLINQ.csproj", "{2D192EEE-AC34-45C7-A978-CD267C2A05CD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P02WstepORM", "P02WstepORM\P02WstepORM.csproj", "{43788DAB-F21D-475A-B03D-E40CCC45D1CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P03AplikacjaZawodnicy", "P03AplikacjaZawodnicy\P03AplikacjaZawodnicy.csproj", "{284FF31B-769D-4870-A383-B38DED925502}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{2D192EEE-AC34-45C7-A978-CD267C2A05CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D192EEE-AC34-45C7-A978-CD267C2A05CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D192EEE-AC34-45C7-A978-CD267C2A05CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43788DAB-F21D-475A-B03D-E40CCC45D1CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43788DAB-F21D-475A-B03D-E40CCC45D1CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43788DAB-F21D-475A-B03D-E40CCC45D1CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43788DAB-F21D-475A-B03D-E40CCC45D1CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{284FF31B-769D-4870-A383-B38DED925502}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{284FF31B-769D-4870-A383-B38DED925502}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{284FF31B-769D-4870-A383-B38DED925502}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{284FF31B-769D-4870-A383-B38DED925502}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
