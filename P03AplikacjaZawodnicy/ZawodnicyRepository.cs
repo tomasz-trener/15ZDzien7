@@ -13,60 +13,78 @@ namespace P03AplikacjaZawodnicy
         public ZawodnikVM[] WczytajZawodnikow(string filtr, string sortowanie)
 
         {
-            string sql = $"select * from zawodnicy where kraj like '%{filtr}%'" +
-                $" or imie like '%{filtr}%'  " +
-                $" or nazwisko like '%{filtr}%'  ";
+            ModelBazyDanychDataContext db = new ModelBazyDanychDataContext();
 
-            if (sortowanie != null)
-                sql += " order by " + sortowanie;
+            var zapytanie =
+                db.Zawodnik.Where(x =>
+                    x.kraj.Contains(filtr) ||
+                    x.imie.Contains(filtr) ||
+                    x.nazwisko.Contains(filtr)
+                    );
 
-            PolaczenieZBaza pzb = new PolaczenieZBaza(connString);
-
-            object[][] wynik = pzb.WykonajZapytanie(sql);
-
-            ZawodnikVM[] zawodnicy = new ZawodnikVM[wynik.Length];
-
-            for (int i = 0; i < wynik.Length; i++)
+            if (!string.IsNullOrEmpty(sortowanie))
             {
-                ZawodnikVM ityZawodnik = new ZawodnikVM();
+                if (sortowanie == "imie")
+                    zapytanie = zapytanie.OrderBy(x => x.imie);
 
-                ityZawodnik.Id_zawodnika = (int)wynik[i][0];
-                ityZawodnik.Imie = (string)wynik[i][2];
-                ityZawodnik.Nazwisko = (string)wynik[i][3];
-                ityZawodnik.Kraj = (string)wynik[i][4];
+                if (sortowanie == "nazwisko")
+                    zapytanie = zapytanie.OrderBy(x => x.nazwisko);
 
-                if (wynik[i][5] != DBNull.Value)
-                    ityZawodnik.DataUr = (DateTime)wynik[i][5];
-
-                ityZawodnik.Wzrost = (int)wynik[i][6];
-                ityZawodnik.Waga = (int)wynik[i][7];
-
-                if (wynik[i][8] != DBNull.Value)
-                    ityZawodnik.Miasto = (string)wynik[i][8];
-
-                zawodnicy[i] = ityZawodnik;
+                if (sortowanie == "wzrost")
+                    zapytanie = zapytanie.OrderBy(x => x.wzrost);
             }
 
-            return zawodnicy;
+            Zawodnik[] zawodnicyDb = zapytanie.ToArray();
+
+            var wynik =
+            zawodnicyDb.Select(x => new ZawodnikVM()
+            {
+                Imie = x.imie,
+                Nazwisko = x.nazwisko,
+                Kraj = x.kraj,
+                DataUr = x.data_ur,
+                Waga = x.waga == null ? 0 : (int)x.waga,
+                Wzrost = x.wzrost == null ? 0 : (int)x.wzrost,
+                Miasto = x.miasto,
+                Id_trenera = x.id_trenera,
+                Id_zawodnika = x.id_zawodnika
+            }).ToArray();
+
+            return wynik;
         }
 
-        public void Edytuj(ZawodnikVM z)
+        public void Edytuj(ZawodnikVM zawodnik)
         {
-            string sql = "update zawodnicy set imie='{0}', nazwisko='{1}', kraj='{2}', data_ur={3}, wzrost={4}, waga={5}, miasto='{6}' where id_zawodnika={7}";
+            ModelBazyDanychDataContext db = new ModelBazyDanychDataContext();
+            var zdb = db.Zawodnik.FirstOrDefault(x => x.id_zawodnika == zawodnik.Id_zawodnika);
+            zdb.id_trenera = zawodnik.Id_trenera;
+            zdb.imie = zawodnik.Imie;
+            zdb.nazwisko = zawodnik.Nazwisko;
+            zdb.miasto = zawodnik.Miasto;
+            zdb.kraj = zawodnik.Kraj;
+            zdb.waga = zawodnik.Waga;
+            zdb.wzrost = zawodnik.Wzrost;
 
-            sql = string.Format(sql, z.Imie, z.Nazwisko, z.Kraj, z.DataUrSQL, z.Wzrost, z.Waga, z.Miasto, z.Id_zawodnika);
-
-            PolaczenieZBaza pzb = new PolaczenieZBaza(connString);
-            pzb.WykonajZapytanie(sql);
+            db.SubmitChanges();
         }
 
         internal void DodajZawodnika(ZawodnikVM zawodnik)
         {
-            string sql = "insert into zawodnicy (imie, nazwisko,kraj,data_ur,wzrost,waga, miasto) values ('{0}','{1}','{2}',{3},{4},{5},'{6}')";
-            sql = string.Format(sql, zawodnik.Imie, zawodnik.Nazwisko, zawodnik.Kraj, zawodnik.DataUrSQL, zawodnik.Wzrost, zawodnik.Waga, zawodnik.Miasto);
+            ModelBazyDanychDataContext db = new ModelBazyDanychDataContext();
 
-            PolaczenieZBaza pzb = new PolaczenieZBaza(connString);
-            pzb.WykonajZapytanie(sql);
+            Zawodnik nowy = new Zawodnik()
+            {
+                id_trenera = zawodnik.Id_trenera,
+                imie = zawodnik.Imie,
+                nazwisko = zawodnik.Nazwisko,
+                miasto = zawodnik.Miasto,
+                kraj = zawodnik.Kraj,
+                waga = zawodnik.Waga,
+                wzrost = zawodnik.Wzrost
+            };
+
+            db.Zawodnik.InsertOnSubmit(nowy);
+            db.SubmitChanges();
         }
 
         public void UsunZawodnika(ZawodnikVM zawodnik)

@@ -8,10 +8,10 @@ namespace P03AplikacjaZawodnicy
 {
     public class ZawodnikVM
     {
-        //id_zawodnika;id_trenera;imie;nazwisko;kraj;data urodzenia;wzrost;waga 
+        //id_zawodnika;id_trenera;imie;nazwisko;kraj;data urodzenia;wzrost;waga
 
         public int Id_zawodnika;
-        public int Id_trenera;
+        public int? Id_trenera;
         public string Imie;
         public string Nazwisko { get; set; }
         public string Kraj;
