@@ -6,21 +6,19 @@ using System.Threading.Tasks;
 
 namespace P01WstepLINQ
 {
-    internal class Zawodnik
+    internal class Zawodnik : ZawodnikBaza
     {
         //id_zawodnika;id_trenera;imie;nazwisko;kraj;data urodzenia;wzrost;waga
 
         public int Id_zawodnika;
         public int Id_trenera;
-        public string Imie;
-        public string Nazwisko { get; set; }
-        public string Kraj;
+
         public DateTime DataUr;
         public int Wzrost;
         public int Waga;
 
-        public string WidoczneDane 
-        { 
+        public string WidoczneDane
+        {
             get
             {
                 return Imie + " " + Nazwisko + " " + Kraj;
@@ -38,6 +36,5 @@ namespace P01WstepLINQ
             Wzrost = Convert.ToInt32(komorki[6]);
             Waga = Convert.ToInt32(komorki[7]);
         }
-
     }
 }

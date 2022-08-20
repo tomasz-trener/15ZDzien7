@@ -28,6 +28,72 @@ namespace P01WstepLINQ
 
             Zawodnik[] zrodlo = mz.Wczytaj(wiersze);
 
+            Zawodnik[] wynik3 = zrodlo.Where(x => x.Kraj == "POL").ToArray();
+
+            //foreach (var z in wynik3)
+            //{
+            //    Console.WriteLine(z.Imie + " " + z.Nazwisko);
+            //}
+
+            // wypisz zawodóników, których nazwisko kończy się na literkę 'a' i ich wzrost jest ponad 2 razy większy niż waga ,
+            // urodzonych w II połowie roku i posortuj po długości imienia
+
+            Zawodnik[] wynik4 = zrodlo
+                .Where(x => x.Nazwisko.ToLower().EndsWith("a") && x.Wzrost > 2 * x.Waga && x.DataUr.Month > 6)
+                .OrderBy(x => x.Imie.Length)
+                .ThenBy(x => x.Wzrost)
+                .ToArray();
+
+            wynik4
+                .ToList()
+                .ForEach(x =>
+                {
+                    Console.WriteLine(x.Imie + " " + x.Nazwisko + " " + x.DataUr);
+                });
+
+            string[] wynik5 = zrodlo.Select(x => x.Imie + " " + x.Nazwisko + " " + x.Kraj).ToArray();
+
+            string[] wynik6 = zrodlo
+                .Where(x => x.Nazwisko.ToLower().EndsWith("a") && x.Wzrost > 2 * x.Waga && x.DataUr.Month > 6)
+                .OrderBy(x => x.Imie.Length)
+                .ThenBy(x => x.Wzrost)
+                .Select(x => x.Imie + " " + x.Nazwisko + " " + x.Kraj)
+                .ToArray();
+
+            string[] wynik7 =
+                zrodlo
+                    .Select(x => x.Kraj)
+                    .OrderBy(x => x)
+                    .ToArray();
+
+            string[] wynik8 =
+                zrodlo
+                .OrderBy(x => x.Kraj)
+                .Select(x => x.Kraj)
+                .ToArray();
+
+            ZawodnikMini[] wynik9 =
+                zrodlo.Select(x => new ZawodnikMini()
+                {
+                    Imie = x.Imie,
+                    Nazwisko = x.Nazwisko,
+                    Kraj = x.Kraj,
+                    BMI = x.Waga / Math.Pow(Convert.ToDouble(x.Wzrost) / 100, 2)
+                }).ToArray();
+
+            var wynik10 =
+                zrodlo.Select(x => new
+                {
+                    MojeImie = x.Imie,
+                    MojeNazwisko = x.Nazwisko,
+                    Wspolczynnik = x.Wzrost + x.Waga
+                }).ToArray();
+
+            foreach (var zaw in wynik10)
+            {
+                Console.WriteLine(zaw.MojeNazwisko + " " + zaw.MojeNazwisko + " " + zaw.Wspolczynnik);
+            }
+
             Console.ReadKey();
         }
     }
