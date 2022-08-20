@@ -1,4 +1,5 @@
-﻿using PdfSharp.Drawing;
+﻿using P05BibliotekaZawodnikVM;
+using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 using System;
 using System.Collections.Generic;
@@ -7,11 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace P03AplikacjaZawodnicy
+namespace P04BibliotekaPDF
 {
-    internal class PdfManager
+    public class PdfManager
     {
-        public void StworzPDF(ZawodnikVM[] zawodnicy)
+        public string StworzPDF(ZawodnikVM[] zawodnicy)
         {
             // Create a new PDF document
             PdfDocument document = new PdfDocument();
@@ -35,10 +36,11 @@ namespace P03AplikacjaZawodnicy
             }
 
             // Save the document...
-            string filename = DateTime.Now.ToString("ddMMyyyyHHmm") + "raport.pdf";
+            string filename = DateTime.Now.ToString("ddMMyyyyHHmmss") + "raport.pdf";
             document.Save(filename);
             // ...and start a viewer.
-            Process.Start(filename);
+            //Process.Start(filename);
+            return filename;
         }
     }
 }

@@ -46,6 +46,7 @@
             this.btnZapisz = new System.Windows.Forms.Button();
             this.chartWykres = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnRaport = new System.Windows.Forms.Button();
+            this.wbPrzegladrka = new System.Windows.Forms.WebBrowser();
             ((System.ComponentModel.ISupportInitialize)(this.chartWykres)).BeginInit();
             this.SuspendLayout();
             // 
@@ -206,11 +207,20 @@
             this.btnRaport.UseVisualStyleBackColor = true;
             this.btnRaport.Click += new System.EventHandler(this.btnRaport_Click);
             // 
+            // wbPrzegladrka
+            // 
+            this.wbPrzegladrka.Location = new System.Drawing.Point(722, 67);
+            this.wbPrzegladrka.MinimumSize = new System.Drawing.Size(20, 20);
+            this.wbPrzegladrka.Name = "wbPrzegladrka";
+            this.wbPrzegladrka.Size = new System.Drawing.Size(298, 317);
+            this.wbPrzegladrka.TabIndex = 15;
+            // 
             // FrmZawodnicy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(740, 397);
+            this.ClientSize = new System.Drawing.Size(1037, 397);
+            this.Controls.Add(this.wbPrzegladrka);
             this.Controls.Add(this.btnRaport);
             this.Controls.Add(this.chartWykres);
             this.Controls.Add(this.btnZapisz);
@@ -252,6 +262,7 @@
         private System.Windows.Forms.Button btnZapisz;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartWykres;
         private System.Windows.Forms.Button btnRaport;
+        private System.Windows.Forms.WebBrowser wbPrzegladrka;
     }
 }
 

@@ -33,12 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PdfSharp, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="PdfSharp.Charting, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.Charting.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
@@ -78,7 +72,6 @@
     <Compile Include="NullableDateTimePicker.Designer.cs">
       <DependentUpon>NullableDateTimePicker.cs</DependentUpon>
     </Compile>
-    <Compile Include="PdfManager.cs" />
     <Compile Include="PolaczenieZBaza.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -86,7 +79,6 @@
     <Compile Include="Temperatura.cs" />
     <Compile Include="TemperaturyRepository.cs" />
     <Compile Include="ZawodnicyRepository.cs" />
-    <Compile Include="ZawodnikVM.cs" />
     <EmbeddedResource Include="FrmSzczegoly.resx">
       <DependentUpon>FrmSzczegoly.cs</DependentUpon>
     </EmbeddedResource>
@@ -133,6 +125,16 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\P04BibliotekaPDF\P04BibliotekaPDF.csproj">
+      <Project>{43e2047c-10e9-4715-a582-5708cd7afe62}</Project>
+      <Name>P04BibliotekaPDF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\P05BibliotekaZawodnikVM\P05BibliotekaZawodnikVM.csproj">
+      <Project>{5f58292b-3e07-4170-a81e-2966f3952014}</Project>
+      <Name>P05BibliotekaZawodnikVM</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using P04BibliotekaPDF;
+using P05BibliotekaZawodnikVM;
+using System;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -83,7 +85,10 @@ namespace P03AplikacjaZawodnicy
         {
             PdfManager pm = new PdfManager();
             var zawodnicy = (ZawodnikVM[])lbDane.DataSource;
-            pm.StworzPDF(zawodnicy);
+            string nazwaPliu = pm.StworzPDF(zawodnicy);
+
+            string sciezka = AppDomain.CurrentDomain.BaseDirectory;
+            wbPrzegladrka.Navigate(sciezka + nazwaPliu);
         }
     }
 }
