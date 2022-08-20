@@ -24,6 +24,13 @@ namespace P03AplikacjaZawodnicy
 
             if (!string.IsNullOrEmpty(sortowanie))
             {
+                sortowanie = sortowanie.ToLower();
+
+                // var pi = typeof(Zawodnik).GetProperty(sortowanie);
+                // zapytanie = zapytanie.OrderBy(x => pi.GetValue(x, null));
+
+                //zapytanie = zapytanie.OrderBy(x => x.GetType().GetProperty(sortowanie).GetValue(x));
+
                 if (sortowanie == "imie")
                     zapytanie = zapytanie.OrderBy(x => x.imie);
 

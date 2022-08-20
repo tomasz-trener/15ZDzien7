@@ -94,7 +94,7 @@ namespace P03AplikacjaZawodnicy
             zawodnik.Kraj = txtKraj.Text;
             zawodnik.DataUr = dtpDataUr.Value;
             zawodnik.Waga = Convert.ToInt32(numWaga.Value);
-            zawodnik.Wzrost = Convert.ToInt32(numWaga.Value);
+            zawodnik.Wzrost = Convert.ToInt32(numWzrost.Value);
             zawodnik.Miasto = txtMiasto.Text;
         }
 

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace P03AplikacjaZawodnicy
 {
@@ -31,6 +33,29 @@ namespace P03AplikacjaZawodnicy
         private void btnWczytaj_Click(object sender, EventArgs e)
         {
             Odswiez();
+            WygenerujWykres();
+        }
+
+        private void WygenerujWykres()
+        {
+            chartWykres.Series.Clear();
+
+            Series seria = new Series("Wzrost");
+            seria.ChartType = SeriesChartType.Column;
+
+            var zawodnicy = (ZawodnikVM[])lbDane.DataSource;
+            var grupy = zawodnicy.GroupBy(x => x.Kraj).Select(x => new
+            {
+                osX = x.Key,
+                osY = x.Average(y => y.Wzrost)
+            });
+
+            string[] wartosci_X = grupy.Select(x => x.osX).ToArray();
+            double[] wartosci_Y = grupy.Select(x => x.osY).ToArray();
+
+            seria.Points.DataBindXY(wartosci_X, wartosci_Y);
+
+            chartWykres.Series.Add(seria);
         }
 
         private void btnSzczegoly_Click(object sender, EventArgs e)
